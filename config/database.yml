@@ -1,0 +1,27 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 40 } %>
+  host: <%= ENV.fetch('MYSQL_HOST') { '127.0.0.1' } %>
+  username: rohit
+  password: rohit
+  connect_timeout: 60
+  read_timeout: 60
+
+staging:
+  <<: *default
+
+development:
+  <<: *default
+  database: blog_innova
+
+test:
+  <<: *default
+  database: blog_innova
+
+production:
+  <<: *default
+
+build:
+  <<: *default
+  adapter: nulldb_innova
